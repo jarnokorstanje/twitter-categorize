@@ -47,6 +47,28 @@ mutation {
   }
 }
 
+# modify station
+mutation {
+    modifyStation(    
+      id: "6080105a39cf1943448d32b1",
+      Title: "name",
+      Connections: [
+        {
+          id:"6080105a39cf1943448d32b0", 
+          Title: "name",
+        }
+    	],
+    )
+    {
+      id
+      Title
+      Connections {
+        id
+        Title
+      }
+    }
+}
+
 # modify station (if you want to use separate variables)
 mutation ExampleWithVariables($id: ID!, $Title: String, $Connections: [ConnectionInput]) {
     modifyStation(    
