@@ -1,5 +1,4 @@
 import Station from '../models/station.js';
-import { bounds } from '../helpers/boundHelper.js';
 import Connection from '../models/connection.js';
 
 export default {
@@ -9,13 +8,7 @@ export default {
                 const start = args.start ? parseInt(args.start) : 0;
                 const limit = args.limit ? parseInt(args.limit) : 10;
 
-                let res;
-                if (args.bounds) {
-                    const area = bounds(args.bounds.northEast, args.bounds.southWest);
-                    res = await Station.find().skip(start).limit(limit).where('Location').within(area);
-                } else {
-                    res = await Station.find().skip(start).limit(limit);
-                }
+                let res = await Station.find().skip(start).limit(limit);
                 return res;
             } catch (e) {
                 console.log(`Error while getting stations: ${e.message}`);
@@ -45,8 +38,6 @@ export default {
                     })
                 );
 
-                stationData.Location.type = 'Point';
-
                 const newStation = new Station({
                     ...stationData,
                     Connections: connectionIds,
@@ -64,10 +55,6 @@ export default {
                 const connections = args.Connections;
                 const stationData = {
                     Title: args.Title,
-                    AddressLine1: args.AddressLine1,
-                    Town: args.Town,
-                    StateOrProvidence: args.StateOrProvidence,
-                    Postcode: args.Postcode,
                 };
 
                 const stationUpdateData = await Station.findByIdAndUpdate(
@@ -81,10 +68,7 @@ export default {
                 if (connections) {
                     const connectionID = connections[0].id;
                     const connectionData = {
-                        ConnectionTypeID: connections[0].ConnectionTypeID,
-                        CurrentTypeID: connections[0].CurrentTypeID,
-                        LevelID: connections[0].LevelID,
-                        Quantity: connections[0].Quantity,
+                        Title: connections[0].Title,
                     };
                     try {
                         await Connection.findByIdAndUpdate(connectionID, connectionData, {
