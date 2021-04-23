@@ -2,14 +2,14 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const stationSchema = new Schema({
+const categorySchema = new Schema({
   Title: String,
-  Connections: [
+  Accounts: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Connections',
+      ref: 'Accounts',
     },
   ],
 });
 
-export default mongoose.model('Station', stationSchema);
+export default mongoose.model('Category', categorySchema);

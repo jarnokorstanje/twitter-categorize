@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-express';
 
 export default gql`
-    type Connections {
+    type Accounts {
         id: ID
         Title: String
     }

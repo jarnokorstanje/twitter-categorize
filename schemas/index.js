@@ -1,5 +1,5 @@
-import stationSchema from './stationSchema.js';
-import connectionSchema from './connectionSchema.js';
+import categorySchema from './categorySchema.js';
+import accountSchema from './accountSchema.js';
 import { gql } from 'apollo-server-express';
 
 const linkSchema = gql`
@@ -13,6 +13,6 @@ const linkSchema = gql`
 
 export default [
     linkSchema,
-    stationSchema,
-    connectionSchema,
+    categorySchema,
+    accountSchema,
 ];

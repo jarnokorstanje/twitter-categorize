@@ -1,7 +1,7 @@
-import stationResolver from './stationResolver.js';
-import connectionResolver from './connectionResolver.js';
+import categoryResolver from './categoryResolver.js';
+import accountResolver from './accountResolver.js';
 
 export default [
-    stationResolver,
-    connectionResolver,
+    categoryResolver,
+    accountResolver,
 ];
