@@ -1,6 +1,6 @@
 import Category from '../models/category.js';
 import Account from '../models/account.js';
-import ObjectId from 'mongoose';
+import mongoose from 'mongoose'
 
 export default {
     Query: {
@@ -52,37 +52,17 @@ export default {
         },
         modifyCategory: async (parents, args) => {
             try {
-                const categoryId = args.id;
-                const accounts = args.Accounts;
-                const categoryData = {
-                    Title: args.Title,
-                };
-
-                const categoryUpdateData = await Category.findByIdAndUpdate(
-                    categoryId,
-                    categoryData,
-                    {
-                        new: true,
-                    }
-                );
-
-                if (accounts) {
-                    const accountID = accounts[0].id;
-                    const accountData = {
-                        Title: accounts[0].Title,
-                    };
-                    try {
-                        await Account.findByIdAndUpdate(accountID, accountData, {
-                            new: true,
-                        });
-                    } catch (e) {
-                        console.log(
-                            `Error while updating account ${e.message}`
-                        );
-                    }
-                }
-
-                return categoryUpdateData.save();
+                args.Accounts = await Promise.all(args.Accounts.map(async account => {
+                    let options = { upsert: true, new: true, setDefaultsOnInsert: true };
+                    // if id is provided update, else generate new id
+                    let accountId = account.id || mongoose.Types.ObjectId();
+                    return Account.findOneAndUpdate(
+                        { _id: accountId }, 
+                        { Title: account.Title }, 
+                        options
+                    );
+                }));
+                return Category.findOneAndUpdate(args.id, args, {new: true});
             } catch (e) {
                 console.log(`Error while updating category ${e.message}`);
             }
