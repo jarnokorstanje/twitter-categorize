@@ -1,5 +1,6 @@
 import Category from '../models/category.js';
 import Account from '../models/account.js';
+import ObjectId from 'mongoose';
 
 export default {
     Query: {
@@ -88,11 +89,10 @@ export default {
         },
         deleteCategory: async (parent, args) => {
             try {
-                const id = args.id;
-                await Category.findByIdAndDelete(id);
+                await Category.findOneAndDelete(args.id);
                 return id;
             } catch (e) {
-                console.log(`Error while deleting category ${e.message}`);
+                console.log(`Error while deleting category: ${e.message}`);
             }
         },
     },
