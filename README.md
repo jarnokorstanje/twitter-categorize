@@ -3,105 +3,75 @@
 example requests:
 
 ```graphql
-# limit the number of stations
+# limit the number of categories
 {
-  stations(start: 1, limit: 3) {
+  categories(start: 0, limit: 3) {
     id
     Title
-    Connections {
-        id
-        Title
+    Accounts {
+      id
+      Title
     }
   }
 }
 
-# station by id
+# category by id
 {
-  station(id: "60800587c2b10439604a5b0e") {
+  category(id: "6080105a39cf1943448d32b1") {
     id
     Title
-    Connections {
-        id
-        Title
+    Accounts {
+      id
+      Title
     }
   }
 }
 
-# add station
+# add category
 mutation {
-  addStation(
-    Title: "Some title",
-    Connections: [
+  addCategory(
+    Title: "Stocks",
+    Accounts: [
       {
-        Title: "Some title"
+        Title: "Account 1"
       }
     ]
   )
   {
     id
     Title
-    Connections {
-        id
-        Title
+    Accounts {
+      id
+      Title
     }
   }
 }
 
-# modify station
+# modify category
 mutation {
-    modifyStation(    
+    modifyCategory(    
       id: "6080105a39cf1943448d32b1",
-      Title: "name",
-      Connections: [
+      Title: "some title",
+      Accounts: [
         {
           id:"6080105a39cf1943448d32b0", 
-          Title: "name",
+          Title: "some title",
         }
     	],
     )
     {
       id
       Title
-      Connections {
+      Accounts {
         id
         Title
       }
     }
 }
 
-# modify station (if you want to use separate variables)
-mutation ExampleWithVariables($id: ID!, $Title: String, $Connections: [ConnectionInput]) {
-    modifyStation(    
-        id: $id,
-        Title: $Title,
-        Connections: $Connections,
-    )
-    {
-        id
-        Title
-        Connections {
-            id
-            Title
-        }
-    }
-}
-
-# variables for modify station, note that format is JSON
-{
-    "id":"someStationID",
-    "Title":"someTitle",
-    "Connections":[
-        {
-            "id":"someConnectionID", 
-            "Title": "Some title",
-        }
-    ],
-}
-
-
-#delete station
+# delete category
 mutation
 {
-	deleteStation(id: "60800587c2b10439604a5b0e"){ id }
+	deleteCategory(id: "5e590b0a7536c009841db2e3")
 }
 ```
