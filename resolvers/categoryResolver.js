@@ -6,10 +6,13 @@ export default {
     Query: {
         categories: async (parent, args) => {
             try {
-                const start = args.start ? parseInt(args.start) : 0;
-                const limit = args.limit ? parseInt(args.limit) : 10;
-
-                let res = await Category.find().skip(start).limit(limit);
+                let res;
+                if (args.userId) {
+                    const userId = String(args.userId);
+                    res = await Category.find({ UserId: userId });
+                } else {
+                    res = await Category.find();
+                }
                 return res;
             } catch (e) {
                 console.log(`Error while getting categories: ${e.message}`);

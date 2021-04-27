@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const categorySchema = new Schema({
+  UserId: String,
   Title: String,
   Accounts: [
     {

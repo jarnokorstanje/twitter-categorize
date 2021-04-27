@@ -3,20 +3,23 @@ import { gql } from 'apollo-server-express';
 export default gql`
     type Category {
         id: ID
+        UserId: String
         Title: String
         Accounts: [Accounts]
     }
     extend type Query {
-        categories(start: Int, limit: Int): [Category]
+        categories(userId: String): [Category]
         category(id: ID!): Category
     }
     extend type Mutation {
         addCategory(
+            UserId: String
             Title: String
             Accounts: [NewAccounts]
         ): Category
         modifyCategory(
             id: ID!
+            UserId: String
             Title: String
             Accounts: [NewAccounts]
         ): Category
