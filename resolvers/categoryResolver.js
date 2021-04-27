@@ -61,7 +61,7 @@ export default {
                     let accountId = account.id || mongoose.Types.ObjectId();
                     return Account.findOneAndUpdate(
                         { _id: accountId }, 
-                        { Title: account.Title }, 
+                        { Handle: account.Handle }, 
                         options
                     );
                 }));

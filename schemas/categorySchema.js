@@ -27,6 +27,6 @@ export default gql`
     }
     input NewAccounts {
         id: ID
-        Title: String
+        Handle: String
     }
 `;
