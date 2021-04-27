@@ -3,10 +3,11 @@
 example requests:
 
 ```graphql
-# limit the number of categories
+# get categories by user
 {
-  categories(start: 0, limit: 3) {
+  categories(userId: "Jarno") {
     id
+    UserId
     Title
     Accounts {
       id
@@ -17,8 +18,9 @@ example requests:
 
 # category by id
 {
-  category(id: "6080105a39cf1943448d32b1") {
+  category(id: "6087c96cc6cf5436b0a22593") {
     id
+    UserId
     Title
     Accounts {
       id
@@ -30,15 +32,20 @@ example requests:
 # add category
 mutation {
   addCategory(
-    Title: "Stocks",
+    UserId: "Test"
+    Title: "Test",
     Accounts: [
       {
-        Title: "Account 1"
+        Title: "Test1"
+      },
+      {
+        Title: "Test2"
       }
     ]
   )
   {
     id
+    UserId
     Title
     Accounts {
       id
@@ -50,17 +57,18 @@ mutation {
 # modify category
 mutation {
     modifyCategory(    
-      id: "6080105a39cf1943448d32b1",
+      id: "6086f1287d6eaa3ef0f30972",
+      UserId: "UserId"
       Title: "some title",
       Accounts: [
         {
-          id:"6080105a39cf1943448d32b0", 
-          Title: "some title",
+          Title: "test",
         }
     	],
     )
     {
       id
+      UserId
       Title
       Accounts {
         id
