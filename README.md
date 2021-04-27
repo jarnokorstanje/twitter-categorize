@@ -11,7 +11,7 @@ example requests:
     Title
     Accounts {
       id
-      Title
+      Handle
     }
   }
 }
@@ -24,7 +24,7 @@ example requests:
     Title
     Accounts {
       id
-      Title
+      Handle
     }
   }
 }
@@ -36,10 +36,10 @@ mutation {
     Title: "Test",
     Accounts: [
       {
-        Title: "Test1"
+        Handle: "Test1"
       },
       {
-        Title: "Test2"
+        Handle: "Test2"
       }
     ]
   )
@@ -49,7 +49,7 @@ mutation {
     Title
     Accounts {
       id
-      Title
+      Handle
     }
   }
 }
@@ -62,7 +62,7 @@ mutation {
       Title: "some title",
       Accounts: [
         {
-          Title: "test",
+          Handle: "test",
         }
     	],
     )
@@ -72,7 +72,7 @@ mutation {
       Title
       Accounts {
         id
-        Title
+        Handle
       }
     }
 }
