@@ -128,7 +128,7 @@ mutation {
       Title: "<titlename>",
       Accounts: [
         {
-         Handle: "<handle>"
+          Handle: "<handle>"
         },
         {
           Handle: "<handle2>"
