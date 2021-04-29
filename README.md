@@ -1,11 +1,37 @@
 # twitter-categorize
 
-example requests:
+## Register new user
 
+POST request to `/register`
+JSON body:
+```json
+{
+    "username": "<username>",
+    "password": "<password>"
+}
+```
+
+## Login for getting Bearer Token
+    
+POST request to `/login`
+JSON body:
+```json
+{
+    "username": "<username>",
+    "password": "<password>"
+}
+```
+
+
+## Example requests:
+
+### Get all categories
+
+POST request to `/graphql`
+Body:
 ```graphql
-# get categories by user
 {
-  categories(userId: "Jarno") {
+  categories {
     id
     UserId
     Title
@@ -15,10 +41,15 @@ example requests:
     }
   }
 }
+```
 
-# category by id
+### Get categories by user
+
+POST request to `/graphql`
+Body:
+```graphql
 {
-  category(id: "6087c96cc6cf5436b0a22593") {
+  categories(userId: "<userId>") {
     id
     UserId
     Title
@@ -28,18 +59,41 @@ example requests:
     }
   }
 }
+```
 
-# add category
+### Get category by ID
+
+POST request to `/graphql`
+Body:
+```graphql
+{
+  category(id: "<categoryId>") {
+    id
+    UserId
+    Title
+    Accounts {
+      id
+      Handle
+    }
+  }
+}
+```
+
+### Add category 
+
+POST request to `/graphql` (Remember to add Bearer Token in Authorization)
+Body:
+```graphql
 mutation {
   addCategory(
-    UserId: "Test"
-    Title: "Test",
+    UserId: "<userId>"
+    Title: "<titlename>",
     Accounts: [
       {
-        Handle: "Test1"
+        Handle: "<handle>"
       },
       {
-        Handle: "Test2"
+        Handle: "<handle2>"
       }
     ]
   )
@@ -53,16 +107,21 @@ mutation {
     }
   }
 }
+```
 
-# modify category
+### Modify category
+
+POST request to `/graphql` (Remember to add Bearer Token in Authorization)
+Body:
+```graphql
 mutation {
     modifyCategory(    
-      id: "6086f1287d6eaa3ef0f30972",
-      UserId: "UserId"
-      Title: "some title",
+      id: "<categoryId>",
+      UserId: "<userId>"
+      Title: "<titlename>",
       Accounts: [
         {
-          Handle: "test",
+          Handle: "<handle>",
         }
     	],
     )
@@ -76,10 +135,15 @@ mutation {
       }
     }
 }
+```
 
-# delete category
+### Delete category
+
+POST request to `/graphql` (Remember to add Bearer Token in Authorization)
+Body:
+```graphql
 mutation
 {
-	deleteCategory(id: "5e590b0a7536c009841db2e3")
+	deleteCategory(id: "<categoryId>")
 }
 ```
