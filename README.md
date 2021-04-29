@@ -3,6 +3,7 @@
 ## Register new user
 
 POST request to `/register`
+
 JSON body:
 ```json
 {
@@ -14,6 +15,7 @@ JSON body:
 ## Login for getting Bearer Token
     
 POST request to `/login`
+
 JSON body:
 ```json
 {
@@ -28,6 +30,7 @@ JSON body:
 ### Get all categories
 
 POST request to `/graphql`
+
 Body:
 ```graphql
 {
@@ -46,6 +49,7 @@ Body:
 ### Get categories by user
 
 POST request to `/graphql`
+
 Body:
 ```graphql
 {
@@ -64,6 +68,7 @@ Body:
 ### Get category by ID
 
 POST request to `/graphql`
+
 Body:
 ```graphql
 {
@@ -82,6 +87,7 @@ Body:
 ### Add category 
 
 POST request to `/graphql` (Remember to add Bearer Token in Authorization)
+
 Body:
 ```graphql
 mutation {
@@ -112,6 +118,7 @@ mutation {
 ### Modify category
 
 POST request to `/graphql` (Remember to add Bearer Token in Authorization)
+
 Body:
 ```graphql
 mutation {
@@ -140,6 +147,7 @@ mutation {
 ### Delete category
 
 POST request to `/graphql` (Remember to add Bearer Token in Authorization)
+
 Body:
 ```graphql
 mutation
