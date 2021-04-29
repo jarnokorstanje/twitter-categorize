@@ -1,5 +1,8 @@
 # twitter-categorize
 
+Live at: `https://node152605-jakor-mongo-node.jelastic.metropolia.fi`
+
+
 ## Register new user
 
 POST request to `/register`
