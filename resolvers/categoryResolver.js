@@ -23,7 +23,10 @@ export default {
         },
     },
     Mutation: {
-        addCategory: async (parent, args) => {
+        addCategory: async (parent, args, context) => {
+            if (!context.user) {
+                throw new Error('Authentication failed');
+            }        
             try {
                 const categoryData = { ...args };
 
@@ -53,7 +56,10 @@ export default {
                 console.log(`Error while creating category ${e.message}`);
             }
         },
-        modifyCategory: async (parents, args) => {
+        modifyCategory: async (parents, args, context) => {
+            if (!context.user) {
+                throw new Error('Authentication failed');
+            }
             try {
                 args.Accounts = await Promise.all(args.Accounts.map(async account => {
                     let options = { upsert: true, new: true, setDefaultsOnInsert: true };
@@ -70,7 +76,10 @@ export default {
                 console.log(`Error while updating category ${e.message}`);
             }
         },
-        deleteCategory: async (parent, args) => {
+        deleteCategory: async (parent, args, context) => {
+            if (!context.user) {
+                throw new Error('Authentication failed');
+            }
             try {
                 await Category.findOneAndDelete(args.id);
                 return id;
