@@ -82,7 +82,7 @@ export default {
             }
             try {
                 await Category.findOneAndDelete(args.id);
-                return id;
+                return `Category deleted with ID: ${args.id}`;
             } catch (e) {
                 console.log(`Error while deleting category: ${e.message}`);
             }
