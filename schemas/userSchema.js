@@ -13,9 +13,4 @@ export default gql`
     password: String
     fullname: String
   }
-
-  # extend type Mutation {
-  #   addUser(username: String, password: String, fullname: String): User
-  #   # modifyAnimal(id: ID!, animalName: String, species: ID): Animal
-  # }
 `;

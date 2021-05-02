@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const accountSchema = new mongoose.Schema({
-    Handle: String,
+    handle: String,
 });
 
 export default mongoose.model('Accounts', accountSchema);

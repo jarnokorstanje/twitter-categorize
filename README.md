@@ -39,11 +39,11 @@ Body:
 {
   categories {
     id
-    UserId
-    Title
-    Accounts {
+    userId
+    title
+    accounts {
       id
-      Handle
+      handle
     }
   }
 }
@@ -58,11 +58,11 @@ Body:
 {
   categories(userId: "<userId>") {
     id
-    UserId
-    Title
-    Accounts {
+    userId
+    title
+    accounts {
       id
-      Handle
+      handle
     }
   }
 }
@@ -77,11 +77,11 @@ Body:
 {
   category(id: "<categoryId>") {
     id
-    UserId
-    Title
-    Accounts {
+    userId
+    title
+    accounts {
       id
-      Handle
+      handle
     }
   }
 }
@@ -95,24 +95,24 @@ Body:
 ```graphql
 mutation {
   addCategory(
-    UserId: "<userId>"
-    Title: "<titlename>",
-    Accounts: [
+    userId: "<userId>"
+    title: "<titlename>",
+    accounts: [
       {
-        Handle: "<handle>"
+        handle: "<handle>"
       },
       {
-        Handle: "<handle2>"
+        handle: "<handle2>"
       }
     ]
   )
   {
     id
-    UserId
-    Title
-    Accounts {
+    userId
+    title
+    accounts {
       id
-      Handle
+      handle
     }
   }
 }

@@ -9,7 +9,7 @@ export default {
                 let res;
                 if (args.userId) {
                     const userId = String(args.userId);
-                    res = await Category.find({ UserId: userId });
+                    res = await Category.find({ userId: userId });
                 } else {
                     res = await Category.find();
                 }
@@ -30,7 +30,7 @@ export default {
             try {
                 const categoryData = { ...args };
 
-                const accounts = args.Accounts;
+                const accounts = args.accounts;
                 const accountIds = await Promise.all(
                     accounts.map(async (con) => {
                         try {
@@ -47,7 +47,7 @@ export default {
 
                 const newCategory = new Category({
                     ...categoryData,
-                    Accounts: accountIds,
+                    accounts: accountIds,
                 });
 
                 newCategory.save();
@@ -61,13 +61,13 @@ export default {
                 throw new Error('Authentication failed');
             }
             try {
-                args.Accounts = await Promise.all(args.Accounts.map(async account => {
+                args.accounts = await Promise.all(args.accounts.map(async account => {
                     let options = { upsert: true, new: true, setDefaultsOnInsert: true };
                     // if id is provided update, else generate new id
                     let accountId = account.id || mongoose.Types.ObjectId();
                     return Account.findOneAndUpdate(
                         { _id: accountId }, 
-                        { Handle: account.Handle }, 
+                        { handle: account.handle }, 
                         options
                     );
                 }));

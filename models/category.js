@@ -3,9 +3,9 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const categorySchema = new Schema({
-  UserId: String,
-  Title: String,
-  Accounts: [
+  userId: String,
+  title: String,
+  accounts: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Accounts',

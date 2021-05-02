@@ -3,9 +3,9 @@ import { gql } from 'apollo-server-express';
 export default gql`
     type Category {
         id: ID
-        UserId: String
-        Title: String
-        Accounts: [Accounts]
+        userId: String
+        title: String
+        accounts: [Accounts]
     }
     extend type Query {
         categories(userId: String): [Category]
@@ -13,20 +13,20 @@ export default gql`
     }
     extend type Mutation {
         addCategory(
-            UserId: String
-            Title: String
-            Accounts: [NewAccounts]
+            userId: String
+            title: String
+            accounts: [NewAccounts]
         ): Category
         modifyCategory(
             id: ID!
-            UserId: String
-            Title: String
-            Accounts: [NewAccounts]
+            userId: String
+            title: String
+            accounts: [NewAccounts]
         ): Category
         deleteCategory(id: ID!): ID
     }
     input NewAccounts {
         id: ID
-        Handle: String
+        handle: String
     }
 `;
