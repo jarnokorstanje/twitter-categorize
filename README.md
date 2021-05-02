@@ -118,6 +118,44 @@ mutation {
 }
 ```
 
+
+### Add category (separate variables)
+
+POST request to `/graphql` (Remember to add Bearer Token in Authorization)
+
+Body:
+```graphql
+mutation addCategory($userId: String!, $title: String!, $accounts: [NewAccounts]) {
+  addCategory(
+    userId: $userId,
+    title: $title,
+    accounts: $accounts
+  )
+  {
+    id
+    userId
+    title
+    accounts {
+      id
+      handle
+    }
+  }
+}
+```
+
+GraphQL variables (JSON):
+```
+{
+    "userId": "<userId>",
+    "title":"<title>",
+    "accounts":[
+        {
+            "handle":"<@handle>"
+        }
+    ]
+}
+```
+
 ### Modify category
 
 POST request to `/graphql` (Remember to add Bearer Token in Authorization)
