@@ -13,14 +13,14 @@ export default gql`
     }
     extend type Mutation {
         addCategory(
-            userId: String
-            title: String
+            userId: String!
+            title: String!
             accounts: [NewAccounts]
         ): Category
         modifyCategory(
             id: ID!
-            userId: String
-            title: String
+            userId: String!
+            title: String!
             accounts: [NewAccounts]
         ): Category
         deleteCategory(id: ID!): ID
