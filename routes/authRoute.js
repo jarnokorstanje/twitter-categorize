@@ -2,6 +2,7 @@
 import express from 'express';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
+import User from '../models/user.js';
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.post('/', async (req, res, next) => {
 
         const token = jwt.sign(user, 'SECRET');
 
-        return res.json({ token });
+        return res.json({ token, user });
       });
     } catch (error) {
       return next(error);
