@@ -71,7 +71,7 @@ export default {
                         options
                     );
                 }));
-                return Category.findOneAndUpdate(args.id, args, {new: true, setDefaultsOnInsert: true});
+                return Category.findOneAndUpdate(args.id, args, {new: true});
             } catch (e) {
                 console.log(`Error while updating category ${e.message}`);
             }
