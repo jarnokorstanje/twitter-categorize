@@ -1,9 +1,14 @@
 # twitter-categorize
 
-Live at: `https://node152605-jakor-mongo-node.jelastic.metropolia.fi`
+
+## Example requests:
+
+Server live at: https://node152605-jakor-mongo-node.jelastic.metropolia.fi
+
+(Requests can be sent with Postman)
 
 
-## Register new user
+### Register new user
 
 POST request to `/register`
 
@@ -15,7 +20,8 @@ JSON body:
 }
 ```
 
-## Login for getting Bearer Token
+
+### Login for getting Bearer Token
     
 POST request to `/login`
 
@@ -27,8 +33,6 @@ JSON body:
 }
 ```
 
-
-## Example requests:
 
 ### Get all categories
 
