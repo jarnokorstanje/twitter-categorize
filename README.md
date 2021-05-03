@@ -49,6 +49,7 @@ Body:
 }
 ```
 
+
 ### Get categories by user
 
 POST request to `/graphql`
@@ -68,6 +69,7 @@ Body:
 }
 ```
 
+
 ### Get category by ID
 
 POST request to `/graphql`
@@ -86,6 +88,7 @@ Body:
   }
 }
 ```
+
 
 ### Add category 
 
@@ -156,6 +159,7 @@ GraphQL variables (JSON):
 }
 ```
 
+
 ### Modify category
 
 POST request to `/graphql` (Remember to add Bearer Token in Authorization)
@@ -188,6 +192,54 @@ mutation {
 }
 ```
 
+GraphQL variables (JSON):
+```
+{
+    "userId": "<userId>",
+    "title":"<title>",
+    "accounts":[
+        {
+            "handle":"<@handle>"
+        }
+    ]
+}
+```
+
+
+### Modify category (separate variables)
+
+POST request to `/graphql` (Remember to add Bearer Token in Authorization)
+
+Body:
+```graphql
+mutation modifyCategory($id: ID!, $userId: String!, $title: String!, $accounts: [NewAccounts]) {
+  modifyCategory(id: $id, userId: $userId, title: $title, accounts: $accounts) {
+    id
+    userId
+    title
+    accounts {
+      id
+      handle
+    }
+  }
+}
+```
+
+GraphQL variables (JSON):
+```
+{
+    "id": "<categoryId>",
+    "userId": "<userId>",
+    "title": "<title>",
+    "accounts": [
+      {
+        "handle":"<@handle>"
+      }
+    ]
+}
+```
+
+
 ### Delete category
 
 POST request to `/graphql` (Remember to add Bearer Token in Authorization)
@@ -197,5 +249,24 @@ Body:
 mutation
 {
 	deleteCategory(id: "<categoryId>")
+}
+```
+
+
+### Delete category (separate variables)
+
+POST request to `/graphql` (Remember to add Bearer Token in Authorization)
+
+Body:
+```graphql
+mutation deleteCategory($id: ID!) {
+  deleteCategory(id: $id)
+}
+```
+
+GraphQL variables (JSON):
+```
+{
+  "id": "<categoryId>"
 }
 ```
