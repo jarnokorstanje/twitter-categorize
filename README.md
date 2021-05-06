@@ -7,6 +7,12 @@ Server live at: https://node152605-jakor-mongo-node.jelastic.metropolia.fi
 
 (Requests can be sent with Postman)
 
+Frontend here: https://github.com/jarnokorstanje/twitter-categorize-frontend 
+
+Frontend live here: https://hopeful-colden-3b1401.netlify.app/ 
+
+(Jelastic backend might sleep. To wake it up you could send a request with Postman. A request from the frontend does not seem to wake it up.)
+
 
 ### Register new user
 
